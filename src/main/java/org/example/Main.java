@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.spring.autowire.Person;
 import org.example.spring.constructorinjection.User;
 import org.example.spring.setterinjection.Student;
 import org.example.spring.setterinjection.Teacher;
@@ -33,6 +34,11 @@ public class Main {
 
         User user2= (User) context1.getBean("user2");
         System.out.println(user2);
+
+        //auto wiring
+        ApplicationContext context2 = new ClassPathXmlApplicationContext("config-auto.xml");
+        Person person = context2.getBean("person",Person.class);
+        System.out.println(person);
 
     }
 }
